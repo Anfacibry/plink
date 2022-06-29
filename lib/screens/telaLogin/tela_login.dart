@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:plink/screens/telaLogin/components/icone_informacao_passada.dart';
+import 'package:plink/screens/telaLogin/models/informacoes_inicial.dart';
 
 import 'package:plink/themes/models/cores.dart';
 
 import '../../themes/models/temas.dart';
 import 'components/custome_clipp.dart';
 
-class HomePlink extends StatelessWidget {
+class HomePlink extends StatefulWidget {
   const HomePlink({Key? key}) : super(key: key);
+
+  @override
+  State<HomePlink> createState() => _HomePlinkState();
+}
+
+class _HomePlinkState extends State<HomePlink> {
+  int _numero = 0;
 
   @override
   Widget build(BuildContext context) {
     final double altura = Cores(context: context).altura;
     final double largura = Cores(context: context).largura;
     final TemaCustom tema = Theme.of(context).extension<TemaCustom>()!;
+
     return Scaffold(
       backgroundColor: const Color(0xFFFEF9F9),
       body: SizedBox(
@@ -53,14 +63,26 @@ class HomePlink extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text(
-                    """Sei jeito unico de pedir comida e poder ver 
-                  as melhores delicias com os melhores preços""",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
+                  SizedBox(
+                      height: altura * .15,
+                      width: largura * .9,
+                      child: PageView.builder(
+                        onPageChanged: (indice) {
+                          setState(() {
+                            _numero = indice;
+                          });
+                        },
+                        itemCount: InformacoesInicias.informacoes.length,
+                        itemBuilder: (buildContext, indice) => Center(
+                          child: Text(
+                            InformacoesInicias.informacoes[indice],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      )),
                   Column(
                     children: [
                       Padding(
@@ -68,36 +90,15 @@ class HomePlink extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 10,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.blue,
-                              ),
-                            ),
+                            IconeInformacaoPassada(numero: _numero, indice: 0),
                             const Padding(
                               padding: EdgeInsets.only(right: 5, left: 5),
                             ),
-                            Container(
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.blue,
-                              ),
-                            ),
+                            IconeInformacaoPassada(numero: _numero, indice: 1),
                             const Padding(
                               padding: EdgeInsets.only(right: 5, left: 5),
                             ),
-                            Container(
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.blue,
-                              ),
-                            ),
+                            IconeInformacaoPassada(numero: _numero, indice: 2),
                           ],
                         ),
                       ),
@@ -105,7 +106,9 @@ class HomePlink extends StatelessWidget {
                         height: 40,
                         width: 250,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            debugPrint(_numero.toString());
+                          },
                           style: tema.buttonStyle,
                           child: const Text(
                             "Entrar",
