@@ -18,14 +18,15 @@ class Plink extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(extensions: <ThemeExtension<dynamic>>[
         TemaCustom(
-            cor: Cores.corSecundaria,
-            decoration: const BoxDecoration(),
-            buttonStyle: ElevatedButton.styleFrom(
-              primary: Cores.corSecundaria,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            )),
+          cor: Cores.corSecundaria,
+          decoration: const BoxDecoration(),
+          buttonStyle: ElevatedButton.styleFrom(
+            primary: Cores.corSecundaria,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
       ]),
       home: const HomePlink(),
     );
