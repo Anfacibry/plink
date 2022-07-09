@@ -65,7 +65,7 @@ class _HomePlinkState extends State<HomePlink> {
                   ),
                   SizedBox(
                       height: altura * .15,
-                      width: largura * .9,
+                      width: largura,
                       child: PageView.builder(
                         onPageChanged: (indice) {
                           setState(() {
