@@ -4,7 +4,6 @@ import 'package:plink/screens/telaLogin/models/informacoes_inicial.dart';
 
 import 'package:plink/themes/models/cores.dart';
 
-import '../../themes/models/temas.dart';
 import 'components/custome_clipp.dart';
 
 class HomePlink extends StatefulWidget {
@@ -21,7 +20,6 @@ class _HomePlinkState extends State<HomePlink> {
   Widget build(BuildContext context) {
     final double altura = Cores(context: context).altura;
     final double largura = Cores(context: context).largura;
-    final TemaCustom tema = Theme.of(context).extension<TemaCustom>()!;
 
     return Scaffold(
       backgroundColor: const Color(0xFFFEF9F9),
@@ -53,19 +51,33 @@ class _HomePlinkState extends State<HomePlink> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: Text(
-                      "Aqui você encontra as melhores comidas",
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 30),
+                    child: RichText(
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
+                      text: const TextSpan(
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          TextSpan(
+                              text: "Aqui você encontra as melhores",
+                              style: TextStyle(
+                                color: Cores.corIconeETextoSecundario,
+                              )),
+                          TextSpan(
+                              text: " Comidas",
+                              style: TextStyle(
+                                color: Cores.corBotao,
+                              )),
+                        ],
                       ),
                     ),
                   ),
                   SizedBox(
                       height: altura * .15,
-                      width: largura,
+                      width: largura * .9,
                       child: PageView.builder(
                         onPageChanged: (indice) {
                           setState(() {
@@ -78,11 +90,15 @@ class _HomePlinkState extends State<HomePlink> {
                             InformacoesInicias.informacoes[indice],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                              fontSize: 18,
+                              fontSize: 20,
                             ),
                           ),
                         ),
                       )),
+
+                  ///
+                  ///Scroll que faz o salto de informações
+                  ///
                   Column(
                     children: [
                       Padding(
@@ -102,6 +118,10 @@ class _HomePlinkState extends State<HomePlink> {
                           ],
                         ),
                       ),
+
+                      ///
+                      ///Parte do botão que irar fazer o cadastro do usuário
+                      ///
                       SizedBox(
                         height: 40,
                         width: 250,
@@ -109,7 +129,6 @@ class _HomePlinkState extends State<HomePlink> {
                           onPressed: () {
                             debugPrint(_numero.toString());
                           },
-                          style: tema.buttonStyle,
                           child: const Text(
                             "Entrar",
                             style: TextStyle(
@@ -118,6 +137,18 @@ class _HomePlinkState extends State<HomePlink> {
                           ),
                         ),
                       ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Criar conta",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FontStyle.italic,
+                            color: Color.fromARGB(255, 57, 154, 235),
+                          ),
+                        ),
+                      )
                     ],
                   )
                 ],
