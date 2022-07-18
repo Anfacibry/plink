@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
-import 'package:plink/themes/models/cores.dart';
+import 'package:plink/themes/models/tema_app.dart';
 
 import 'screens/telaLogin/tela_login.dart';
-import 'themes/models/temas.dart';
 
 void main() => runApp(const Plink());
 
@@ -16,18 +15,7 @@ class Plink extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light().copyWith(extensions: <ThemeExtension<dynamic>>[
-        TemaCustom(
-          cor: Cores.corSecundaria,
-          decoration: const BoxDecoration(),
-          buttonStyle: ElevatedButton.styleFrom(
-            primary: Cores.corSecundaria,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-      ]),
+      theme: TemaApp().temaApp,
       home: const HomePlink(),
     );
   }

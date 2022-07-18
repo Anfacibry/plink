@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:plink/screens/telaCadastro/tela_cadastro.dart';
-import 'package:plink/screens/telaLogin/components/texto_span.dart';
+import 'package:plink/components/texto_span.dart';
 import 'package:plink/themes/models/cores.dart';
 
 import '../models/informacoes_inicial.dart';
 import 'icone_informacao_passada.dart';
 
 class SegundaParte extends StatefulWidget {
-  const SegundaParte({Key? key}) : super(key: key);
+  final double alturaMult;
+  const SegundaParte({required this.alturaMult, Key? key}) : super(key: key);
 
   @override
   State<SegundaParte> createState() => _SegundaParteState();
@@ -21,14 +22,18 @@ class _SegundaParteState extends State<SegundaParte> {
     final double altura = Cores(context: context).altura;
     final double largura = Cores(context: context).largura;
     return SizedBox(
-      height: altura * .6,
+      height: altura * widget.alturaMult,
       width: largura,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 30, right: 30),
-            child: TextoDestaque(),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: TextoDestaque(
+              tamanhoTexto: Theme.of(context).textTheme.headline4!,
+              primeiraFrase: "Aqui você encontra as melhores",
+              segundaFase: " Comidas",
+            ),
           ),
           SizedBox(
               height: altura * .15,

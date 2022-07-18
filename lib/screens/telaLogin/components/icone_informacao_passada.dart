@@ -17,7 +17,9 @@ class IconeInformacaoPassada extends StatelessWidget {
       width: numero == indice ? 20 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: numero == indice ? Cores.corContainer : Cores.corBotao,
+        color: numero == indice
+            ? Cores.corContainer
+            : Cores.corBotaoApagadoBodyText1,
       ),
     );
   }
