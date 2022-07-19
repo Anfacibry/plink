@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plink/themes/models/tema_app.dart';
 
-import 'screens/telaLogin/tela_login.dart';
+import 'screens/telaPrincipal/tela_login.dart';
 
 void main() => runApp(const Plink());
 
