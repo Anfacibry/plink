@@ -11,7 +11,7 @@ class TemaApp {
 ElevatedButtonThemeData temaBotao = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(20),
       ),
       primary: Cores.corBotao,
       textStyle: const TextStyle(
